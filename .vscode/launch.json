@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "cassandra_native",
+            "cwd": "cassandra_native",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "cassandra_native (profile mode)",
+            "cwd": "cassandra_native",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "cassandra_native (release mode)",
+            "cwd": "cassandra_native",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

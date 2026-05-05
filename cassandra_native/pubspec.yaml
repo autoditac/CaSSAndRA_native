@@ -120,3 +120,4 @@ flutter:
 flutter_native_splash:
   image: lib/images/splash.png
   color: "eeeeee"
+  color_dark: "424242"

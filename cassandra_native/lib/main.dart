@@ -15,14 +15,14 @@ import 'package:cassandra_native/pages/servers_page.dart';
 // globals
 import 'package:cassandra_native/data/user_data.dart' as user;
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   MediaKit.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     _setWindowSize();
   }
-  _initPackageInfo();
-  _loadStoredUiState();
+  await _initPackageInfo();
+  await _loadStoredUiState();
   runApp(
     MultiProvider(
       providers: [
@@ -61,7 +61,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<ThemeProvider>(context).initTheme();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // scrollBehavior: const MaterialScrollBehavior().copyWith(

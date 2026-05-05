@@ -29,12 +29,17 @@ ThemeData lightMode = ThemeData(
 ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
   colorScheme: ColorScheme.dark(
-      surface: Colors.grey.shade800,
-      primary: Colors.grey.shade500,
-      secondary: Colors.grey.shade600,
+      surface: Color.fromARGB(255, 30, 30, 30),
+      primary: Color.fromARGB(255, 105, 105, 105),
+      secondary: Color.fromARGB(255, 20, 20, 20),
+      tertiary: Color.fromARGB(255, 29, 29, 29),
+      inversePrimary: Color.fromARGB(255, 195, 195, 195),
+      // surface: Colors.grey.shade800,
+      // primary: Colors.grey.shade500,
+      // secondary: Colors.grey.shade600,
       onSurface: Colors.grey.shade100,
       onPrimary: Colors.grey.shade900,
-      inversePrimary: Colors.grey.shade200,
+      // inversePrimary: Colors.grey.shade200,
       errorContainer: Colors.deepOrange),
   fontFamily: GoogleFonts.montserrat().fontFamily,
   textTheme: const TextTheme(
@@ -81,4 +86,3 @@ class PreviewColorPalette {
 //   colorScheme: darkColorScheme,
 //   fontFamily: GoogleFonts.montserrat().fontFamily,
 // );
-
