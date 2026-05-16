@@ -96,7 +96,7 @@ jobs:
               r'^(linux-vdso|ld-linux|libc\.so|libm\.so|libpthread\.so|'
               r'libdl\.so|librt\.so|libresolv\.so|libgcc_s\.so|'
               r'libstdc\+\+\.so|libEGL\.so|libGL|libGLES|libOpenGL|'
-              r'libdrm\.so|libgbm\.so|libwayland|libX|libxcb|libxkb|'
+              r'libdrm\.so|libgbm\.so|libwayland|libX(?!present)|libxcb|libxkb|'
               r'libvulkan\.so|libva|libpulse|libasound|libsystemd|'
               r'libdbus|libudev)'
           )
@@ -142,7 +142,21 @@ jobs:
             build/linux/x64/release/bundle/lib/libdrm.so* \
             build/linux/x64/release/bundle/lib/libgbm.so* \
             build/linux/x64/release/bundle/lib/libwayland*.so* \
-            build/linux/x64/release/bundle/lib/libX*.so* \
+            build/linux/x64/release/bundle/lib/libX11*.so* \
+            build/linux/x64/release/bundle/lib/libXau*.so* \
+            build/linux/x64/release/bundle/lib/libXcomposite*.so* \
+            build/linux/x64/release/bundle/lib/libXcursor*.so* \
+            build/linux/x64/release/bundle/lib/libXdamage*.so* \
+            build/linux/x64/release/bundle/lib/libXdmcp*.so* \
+            build/linux/x64/release/bundle/lib/libXext*.so* \
+            build/linux/x64/release/bundle/lib/libXfixes*.so* \
+            build/linux/x64/release/bundle/lib/libXi*.so* \
+            build/linux/x64/release/bundle/lib/libXinerama*.so* \
+            build/linux/x64/release/bundle/lib/libXrandr*.so* \
+            build/linux/x64/release/bundle/lib/libXrender*.so* \
+            build/linux/x64/release/bundle/lib/libXss*.so* \
+            build/linux/x64/release/bundle/lib/libXt*.so* \
+            build/linux/x64/release/bundle/lib/libXv*.so* \
             build/linux/x64/release/bundle/lib/libxcb*.so* \
             build/linux/x64/release/bundle/lib/libxkb*.so* \
             build/linux/x64/release/bundle/lib/libvulkan.so* \
