@@ -25,6 +25,7 @@ class _NewServerState extends State<NewServer> {
   final _userController = TextEditingController();
   final _passwordController = TextEditingController();
   String? _rtspUrl;
+  bool _useTls = false;
   //final _rtspUrlController = TextEditingController();
   Category _selectedCategory = Category.alfred;
 
@@ -70,6 +71,7 @@ class _NewServerState extends State<NewServer> {
         port: enteredPort,
         user: _userController.text,
         password: _passwordController.text,
+        useTls: _useTls,
         rtspUrl: _rtspUrl,
         // rtspUrl:
         //     _rtspUrlController.text.isEmpty ? null : _rtspUrlController.text,
@@ -101,6 +103,7 @@ class _NewServerState extends State<NewServer> {
       _portController.text = widget.server!.port.toString();
       _userController.text = widget.server!.user;
       _passwordController.text = widget.server!.password;
+      _useTls = widget.server!.useTls;
       _selectedCategory = widget.server!.category;
       _rtspUrl = widget.server!.rtspUrl;
       // _rtspUrlController.text = widget.server!.rtspUrl ?? '';
@@ -161,6 +164,19 @@ class _NewServerState extends State<NewServer> {
                   ),
                 )
               ],
+            ),
+            SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                'TLS',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+              value: _useTls,
+              onChanged: (value) {
+                setState(() {
+                  _useTls = value;
+                });
+              },
             ),
             Row(
               children: [

@@ -61,6 +61,7 @@ class _ContentAppTileState extends State<ContentAppTile> {
       port: widget.currentServer.port,
       user: widget.currentServer.user,
       password: widget.currentServer.password,
+      useTls: widget.currentServer.useTls,
       rtspUrl: widget.currentServer.rtspUrl,
     );
     user.registredServers.editServer(editedServer);

@@ -34,6 +34,7 @@ class _ContentApiTileState extends State<ContentApiTile> {
   final TextEditingController _apiMqttPortController = TextEditingController();
   final TextEditingController _apiMqttCassandraServerNameController =
       TextEditingController();
+  bool _apiMqttUseTls = false;
 
   @override
   void dispose() {
@@ -61,8 +62,9 @@ class _ContentApiTileState extends State<ContentApiTile> {
         widget.currentServer.settings.apiMqttCassandraServerName ?? '';
     _apiMqttPortController.text =
         widget.currentServer.settings.apiMqttPort != null
-            ? widget.currentServer.settings.mqttPort.toString()
+            ? widget.currentServer.settings.apiMqttPort.toString()
             : '';
+    _apiMqttUseTls = widget.currentServer.settings.apiMqttUseTls;
     super.initState();
   }
 
@@ -128,6 +130,7 @@ class _ContentApiTileState extends State<ContentApiTile> {
         _apiMqttPasswordController.text;
     widget.currentServer.settings.apiMqttPort =
         int.tryParse(_apiMqttPortController.text);
+    widget.currentServer.settings.apiMqttUseTls = _apiMqttUseTls;
     widget.currentServer.serverInterface
         .commandSetSettings('setComm', widget.currentServer.settings.commCfgToJson());
 
@@ -153,6 +156,7 @@ class _ContentApiTileState extends State<ContentApiTile> {
             port: widget.currentServer.settings.apiMqttPort ?? 1883,
             user: widget.currentServer.settings.apiMqttUser ?? '',
             password: widget.currentServer.settings.apiMqttPassword ?? '',
+            useTls: widget.currentServer.settings.apiMqttUseTls,
           );
           user.registredServers.editServer(editedServer);
           ServerStorage.saveServers(user.registredServers.servers);
@@ -181,10 +185,11 @@ class _ContentApiTileState extends State<ContentApiTile> {
         widget.currentServer.settings.apiMqttServer ?? '';
     _apiMqttPortController.text =
         widget.currentServer.settings.apiMqttPort != null
-            ? widget.currentServer.settings.mqttPort.toString()
+            ? widget.currentServer.settings.apiMqttPort.toString()
             : '';
     _apiMqttCassandraServerNameController.text =
         widget.currentServer.settings.apiMqttCassandraServerName ?? '';
+    _apiMqttUseTls = widget.currentServer.settings.apiMqttUseTls;
   }
 
   Widget _getApiConnectionContent() {
@@ -299,6 +304,19 @@ class _ContentApiTileState extends State<ContentApiTile> {
                 ),
               ),
             ],
+          ),
+          SwitchListTile(
+            contentPadding: EdgeInsets.zero,
+            title: Text(
+              'TLS',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            value: _apiMqttUseTls,
+            onChanged: (value) {
+              setState(() {
+                _apiMqttUseTls = value;
+              });
+            },
           ),
         ],
       );

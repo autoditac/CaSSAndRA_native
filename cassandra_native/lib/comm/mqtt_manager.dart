@@ -29,6 +29,8 @@ class MqttManager {
     String clientId = server.id;
     var client = MqttServerClient(server.mqttServer, clientId);
 
+    client.port = server.port;
+    client.secure = server.useTls;
     client.logging(on: false);
     client.onConnected = () => _subscribeTopics(server);
     client.onDisconnected = () => _handleDisconnection(clientId);

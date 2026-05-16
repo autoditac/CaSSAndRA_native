@@ -12,6 +12,7 @@ class ServerInterface {
     required this.serverNamePrefix,
     required this.user,
     required this.password,
+    this.useTls = false,
   });
 
   String serverInterface = 'api_cmd';
@@ -21,6 +22,7 @@ class ServerInterface {
   String serverNamePrefix;
   String user;
   String password;
+  bool useTls;
 
   Map<String, List<double>> _coordsToMap(List<Offset> coords) {
     final List<double> xValues = coords.map((p) => p.dx).toList();

@@ -43,6 +43,7 @@ class Server {
     required this.port,
     required this.user,
     required this.password,
+    this.useTls = false,
     this.rtspUrl,
   }) : serverInterface = ServerInterface(
           id: id,
@@ -51,6 +52,7 @@ class Server {
           serverNamePrefix: serverNamePrefix,
           user: user,
           password: password,
+          useTls: useTls,
         );
   String software = '';
   String version = '';
@@ -66,6 +68,7 @@ class Server {
   final int port;
   final String user;
   final String password;
+  final bool useTls;
 
   ServerInterface serverInterface;
   String status = "offline";
@@ -87,6 +90,7 @@ class Server {
         'port': port,
         'user': user,
         'password': password,
+        'useTls': useTls,
         'rtspUrl': rtspUrl,
       };
 
@@ -100,6 +104,7 @@ class Server {
       port: json['port'],
       user: json['user'],
       password: json['password'],
+      useTls: json['useTls'] ?? false,
       rtspUrl: json['rtspUrl'],
     );
   }

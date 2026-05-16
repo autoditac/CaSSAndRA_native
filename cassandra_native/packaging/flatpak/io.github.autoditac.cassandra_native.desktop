@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CaSSAndRA Native
+Comment=Native client for CaSSAndRA mower control
+Exec=cassandra_native
+Icon=io.github.autoditac.cassandra_native
+Categories=Utility;
+Terminal=false
+StartupWMClass=cassandra_native

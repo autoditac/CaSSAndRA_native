@@ -1,0 +1,32 @@
+app-id: io.github.autoditac.cassandra_native
+runtime: org.gnome.Platform
+runtime-version: '46'
+sdk: org.gnome.Sdk
+command: cassandra_native
+finish-args:
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --device=dri
+modules:
+  - name: cassandra-native
+    buildsystem: simple
+    build-commands:
+      - install -d /app/cassandra_native /app/bin /app/share/applications /app/share/metainfo /app/share/icons/hicolor/1024x1024/apps
+      - cp -a bundle/. /app/cassandra_native/
+      - ln -s ../cassandra_native/cassandra_native /app/bin/cassandra_native
+      - install -Dm644 io.github.autoditac.cassandra_native.desktop /app/share/applications/io.github.autoditac.cassandra_native.desktop
+      - install -Dm644 io.github.autoditac.cassandra_native.metainfo.xml /app/share/metainfo/io.github.autoditac.cassandra_native.metainfo.xml
+      - install -Dm644 app_icon.png /app/share/icons/hicolor/1024x1024/apps/io.github.autoditac.cassandra_native.png
+    sources:
+      - type: dir
+        path: ../../build/linux/x64/release/bundle
+        dest: bundle
+      - type: file
+        path: io.github.autoditac.cassandra_native.desktop
+      - type: file
+        path: io.github.autoditac.cassandra_native.metainfo.xml
+      - type: file
+        path: ../../lib/images/launch_icons/Android/app_icon.png
+        dest-filename: app_icon.png

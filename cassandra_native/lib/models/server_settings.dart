@@ -42,6 +42,7 @@ class ServerSettings {
   String? apiMqttServer;
   int? apiMqttPort;
   String? apiMqttCassandraServerName;
+  bool apiMqttUseTls = false;
   // message service type
   MessageServiceType messageServiceType = MessageServiceType.deactivated;
   String? telegramApiToken;
@@ -91,6 +92,7 @@ class ServerSettings {
       apiMqttServer = decodedMessage['apiMqttServer'];
       apiMqttCassandraServerName = decodedMessage['apiMqttCassandraServerName'];
       apiMqttPort = decodedMessage['apiMqttPort'];
+      apiMqttUseTls = decodedMessage['apiMqttUseTls'] ?? false;
       messageServiceType = decodedMessage['messageServiceType'] != null
           ? MessageServiceType.values.byName(
               decodedMessage['messageServiceType'].toString().toLowerCase())
@@ -154,6 +156,7 @@ class ServerSettings {
         'apiMqttServer': apiMqttServer,
         'apiMqttCassandraServerName': apiMqttCassandraServerName,
         'apiMqttPort': apiMqttPort,
+        'apiMqttUseTls': apiMqttUseTls,
         'messageServiceType':
             messageServiceType == MessageServiceType.deactivated
                 ? null
