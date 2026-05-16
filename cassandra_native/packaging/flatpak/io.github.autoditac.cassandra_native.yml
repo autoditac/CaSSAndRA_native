@@ -13,13 +13,15 @@ modules:
   - name: cassandra-native
     buildsystem: simple
     build-commands:
-      - install -d /app/cassandra_native /app/bin /app/share/applications /app/share/metainfo /app/share/icons/hicolor/1024x1024/apps /app/share/icons/hicolor/192x192/apps
+      - install -d /app/cassandra_native /app/bin /app/share/applications /app/share/metainfo /app/share/icons/hicolor/64x64/apps /app/share/icons/hicolor/128x128/apps /app/share/icons/hicolor/512x512/apps /app/share/icons/hicolor/1024x1024/apps
       - cp -a bundle/. /app/cassandra_native/
       - ln -s ../cassandra_native/cassandra_native /app/bin/cassandra_native
       - install -Dm644 io.github.autoditac.cassandra_native.desktop /app/share/applications/io.github.autoditac.cassandra_native.desktop
       - install -Dm644 io.github.autoditac.cassandra_native.metainfo.xml /app/share/metainfo/io.github.autoditac.cassandra_native.metainfo.xml
+      - install -Dm644 icon-64.png /app/share/icons/hicolor/64x64/apps/io.github.autoditac.cassandra_native.png
+      - install -Dm644 icon-128.png /app/share/icons/hicolor/128x128/apps/io.github.autoditac.cassandra_native.png
+      - install -Dm644 icon-512.png /app/share/icons/hicolor/512x512/apps/io.github.autoditac.cassandra_native.png
       - install -Dm644 app_icon.png /app/share/icons/hicolor/1024x1024/apps/io.github.autoditac.cassandra_native.png
-      - install -Dm644 app_icon_192.png /app/share/icons/hicolor/192x192/apps/io.github.autoditac.cassandra_native.png
     sources:
       - type: dir
         path: ../../build/linux/x64/release/bundle
@@ -29,8 +31,14 @@ modules:
       - type: file
         path: io.github.autoditac.cassandra_native.metainfo.xml
       - type: file
+        path: icons/io.github.autoditac.cassandra_native-64.png
+        dest-filename: icon-64.png
+      - type: file
+        path: icons/io.github.autoditac.cassandra_native-128.png
+        dest-filename: icon-128.png
+      - type: file
+        path: icons/io.github.autoditac.cassandra_native-512.png
+        dest-filename: icon-512.png
+      - type: file
         path: ../../lib/images/launch_icons/Android/app_icon.png
         dest-filename: app_icon.png
-      - type: file
-        path: ../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
-        dest-filename: app_icon_192.png

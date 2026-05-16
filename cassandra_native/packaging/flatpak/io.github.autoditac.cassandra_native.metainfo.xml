@@ -11,6 +11,7 @@
     <p>CaSSAndRA Native is a Flutter client for configuring and controlling CaSSAndRA mower installations.</p>
   </description>
   <launchable type="desktop-id">io.github.autoditac.cassandra_native.desktop</launchable>
+  <icon type="stock">io.github.autoditac.cassandra_native</icon>
   <provides>
     <binary>cassandra_native</binary>
   </provides>
