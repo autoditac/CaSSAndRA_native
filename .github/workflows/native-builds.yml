@@ -95,7 +95,10 @@ jobs:
           skip = re.compile(
               r'^(linux-vdso|ld-linux|libc\.so|libm\.so|libpthread\.so|'
               r'libdl\.so|librt\.so|libresolv\.so|libgcc_s\.so|'
-              r'libstdc\+\+\.so)'
+              r'libstdc\+\+\.so|libEGL\.so|libGL|libGLES|libOpenGL|'
+              r'libdrm\.so|libgbm\.so|libwayland|libX|libxcb|libxkb|'
+              r'libvulkan\.so|libva|libpulse|libasound|libsystemd|'
+              r'libdbus|libudev)'
           )
           copied = set()
           queue = list(roots)
@@ -133,6 +136,22 @@ jobs:
           for library in sorted(copied):
               print('bundled', library[0])
           PY
+          rm -f build/linux/x64/release/bundle/lib/libEGL.so* \
+            build/linux/x64/release/bundle/lib/libGL*.so* \
+            build/linux/x64/release/bundle/lib/libOpenGL.so* \
+            build/linux/x64/release/bundle/lib/libdrm.so* \
+            build/linux/x64/release/bundle/lib/libgbm.so* \
+            build/linux/x64/release/bundle/lib/libwayland*.so* \
+            build/linux/x64/release/bundle/lib/libX*.so* \
+            build/linux/x64/release/bundle/lib/libxcb*.so* \
+            build/linux/x64/release/bundle/lib/libxkb*.so* \
+            build/linux/x64/release/bundle/lib/libvulkan.so* \
+            build/linux/x64/release/bundle/lib/libva*.so* \
+            build/linux/x64/release/bundle/lib/libpulse*.so* \
+            build/linux/x64/release/bundle/lib/libasound.so* \
+            build/linux/x64/release/bundle/lib/libsystemd.so* \
+            build/linux/x64/release/bundle/lib/libdbus*.so* \
+            build/linux/x64/release/bundle/lib/libudev.so*
           find build/linux/x64/release/bundle/lib -maxdepth 1 -type f -name '*.so*' -print0 | xargs -0 -r patchelf --set-rpath '$ORIGIN'
           ldd build/linux/x64/release/bundle/cassandra_native | grep -E 'libmpv|not found'
 
